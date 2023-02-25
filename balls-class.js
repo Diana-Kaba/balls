@@ -1,8 +1,8 @@
 const canvas = document.getElementById("canvas");
 const n = 10;
 
-const colors = ["red", "green", "blue", "yellow", "pink", "orange", "purple"];
-const random = Math.floor(Math.random() * colors.length);
+// const colors = ["red", "green", "blue", "yellow", "pink", "orange", "purple"];
+// const random = Math.floor(Math.random() * colors.length);
 
 class Ball {
   constructor(canvas, x = 100, y = 100) {
@@ -13,7 +13,8 @@ class Ball {
     this.y = x;
     this.xSpeed = Math.floor(Math.random() * 10);
     this.ySpeed = Math.floor(Math.random() * 10);
-    this.color = colors[random];
+    this.colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+    this.color = this.getColor();
     // ctx.fillStyle = ctx.clearRect(0, 0, width, height);
   }
 
@@ -45,6 +46,11 @@ class Ball {
     if (this.y < 0 || this.y > this.height) {
       this.ySpeed = -this.ySpeed;
     }
+  }
+
+  getColor() {
+    let random = Math.floor(Math.random() * this.colors.length);
+    return this.colors[random];
   }
 }
 
